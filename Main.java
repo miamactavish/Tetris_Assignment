@@ -9,4 +9,8 @@ public class Main {
     public void testMethod() {
         System.out.println("Hi");
     }
+
+    public void MsMiaMethod() {
+        System.out.println("Ms. Mia was here 🦜");
+    }
 }

@@ -9,4 +9,8 @@ public class Main {
     public void testMethod() {
         System.out.println("Hi");
     }
+
+    public void sonnysMethod() {
+        System.out.println("Sonny wuz here!");
+    }
 }

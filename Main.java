@@ -10,6 +10,10 @@ public class Main {
         System.out.println("Hi");
     }
 
+    public void MsMiaMethod() {
+        System.out.println("Ms. Mia was here 🦜");
+    }
+
     public void sonnysMethod() {
         System.out.println("Sonny wuz here!");
     }

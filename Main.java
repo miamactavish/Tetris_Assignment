@@ -4,6 +4,8 @@ public class Main {
 
         int a = 4 + 3;
         int b = a + 10;
+
+        int c = b + a;
     }
 
     public void testMethod() {

@@ -14,7 +14,7 @@ public class Main {
     }
 
     public static void MsMiaMethod() {
-        System.out.println("Ms. Mia was here 🦜");
+        System.out.println("Ms. Mia was here 🍦🦜");
     }
 
     public static void sonnysMethod() {

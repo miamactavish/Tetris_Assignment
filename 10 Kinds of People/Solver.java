@@ -69,7 +69,7 @@ public class Solver {
         boolean solvable = false;
 
         while (!finished) {
-            System.out.println("looping");
+            //System.out.println(reachableCells);
             // take the current cell and mark all of its neighbors (not including diagonal) as "reachable"
 
             // Mark the north neighbor
@@ -137,7 +137,9 @@ public class Solver {
         // Make sure both cells are part of the same region (both 0's or both 1's)
         if (c.value == current.value) {
             c.reachable = true;
-            reachableCells.add(c);
+            if (c.visited == false) {
+                reachableCells.add(c);
+            }
         }
     }
 }

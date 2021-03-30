@@ -81,6 +81,7 @@ public class Solver {
         }
 
         while (!finished) {
+
             // take the current cell and mark all of its neighbors (not including diagonal) as "reachable"
 
             // Mark the north neighbor

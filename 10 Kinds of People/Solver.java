@@ -2,6 +2,8 @@ import java.util.ArrayList;
 
 public class Solver {
 
+    final boolean DRAW_MODE = false;
+
     // Cell represents one individual cell of
     // our map
     public class Cell {
@@ -41,6 +43,8 @@ public class Solver {
 
     ArrayList<Cell> reachableCells;
 
+    MyGraphics graphics;
+
     public Solver(int[][] m) {
         
         num_rows = m.length;
@@ -54,22 +58,29 @@ public class Solver {
         }
 
         reachableCells = new ArrayList<Cell>();
+        graphics = new MyGraphics(this, DRAW_MODE);
     }
 
-    public void solve(int r1, int c1, int r2, int c2) {
+    public void solve(int r1, int c1, int r2, int c2) 
+    {
         start = map[r1 - 1][c1 - 1];
         goal = map[r2 - 1][c2 - 1];
-
         
         Cell current = start;
         current.reachable = true;
-        System.out.println(current);
 
         boolean finished = false;
         boolean solvable = false;
 
+        graphics.updateBoard();
+
+        // Check for an edge case - start and goal cells are the same cell
+        if (start.equals(goal)) {
+            finished = true;
+            solvable = true;
+        }
+
         while (!finished) {
-            System.out.println("looping");
             // take the current cell and mark all of its neighbors (not including diagonal) as "reachable"
 
             // Mark the north neighbor
@@ -83,6 +94,7 @@ public class Solver {
 
             // Also tag the current cell as "visited"
             current.visited = true;
+            graphics.updateBoard();
 
             //System.out.println(reachableCells);
 
@@ -104,14 +116,14 @@ public class Solver {
 
         if (solvable) {
             if (goal.value == 0) {
-                System.out.println("binary");
+                //System.out.println("binary");
             }
             else {
-                System.out.println("decimal");
+                //System.out.println("decimal");
             }
         }
         else {
-            System.out.println("neither");
+            //System.out.println("neither");
         }
     }
 
@@ -135,9 +147,26 @@ public class Solver {
         Cell c = map[current.row + rowInc][current.col + colInc];
 
         // Make sure both cells are part of the same region (both 0's or both 1's)
-        if (c.value == current.value) {
+        if (c.value == current.value && !c.visited) {
             c.reachable = true;
             reachableCells.add(c);
+            graphics.updateBoard();
+        }
+    }
+
+    Cell get(int row, int col) {
+        return map[row][col];
+    }
+
+    void clear() {
+        
+        reachableCells.clear();
+
+        for (Cell[] row : map) {
+            for (Cell cell : row) {
+                cell.visited = false;
+                cell.reachable = false;
+            }
         }
     }
 }

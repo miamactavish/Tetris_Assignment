@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -30,6 +29,8 @@ public class Main {
 
         int num_iterations = sc.nextInt();
 
+        long startTime = System.currentTimeMillis();
+
         for (int i = 0; i < num_iterations; i++) {
             
             // Coordinates for starting cell
@@ -41,6 +42,16 @@ public class Main {
             int c2 = sc.nextInt();
 
             s.solve(r1, c1, r2, c2);
+
+            s.clear();
+
         }
+        long endTime = System.currentTimeMillis();
+
+        long runTime = endTime - startTime;
+        System.out.println(runTime + " milliseconds");
+
+        sc.close();
+
     }
 }
